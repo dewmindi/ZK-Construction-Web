@@ -14,7 +14,7 @@ const archivo = Archivo_Black({
 });
 
 export const metadata: Metadata = {
-  title: 'Modern Build & Trade | Engineering Excellence',
+  title: 'ZK Construction Group | Engineering Excellence',
   description: 'Premium Construction, Electrical, and Plumbing services specializing in minimalist industrial design and precision execution.',
 };
 
