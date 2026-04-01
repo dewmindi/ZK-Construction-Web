@@ -10,7 +10,6 @@ import Image from 'next/image';
 export default function AboutPage() {
   return (
     <SmoothScrollProvider>
-      <CustomCursor />
       <Navbar />
       <main className="bg-paper min-h-screen pt-32">
         {/* Hero Section */}

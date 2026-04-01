@@ -13,7 +13,7 @@ export default function Hero() {
 
   const y = useTransform(scrollYProgress, [0, 1], ["0%", "20%"]);
 
-  const headline = "A collaboration of professionals from different backgrounds.";
+  const headline = "Where Structures Rise and Systems Come to Life.";
   const words = headline.split(" ");
 
   return (
@@ -36,18 +36,19 @@ export default function Hero() {
 
       {/* Content */}
       <div className="relative z-10 container mx-auto px-6 text-center">
+        
         <div className="overflow-hidden mb-4">
           <motion.p
             initial={{ y: 50, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            className="text-brand font-sans tracking-[0.3em] uppercase text-sm md:text-base font-bold"
+            className="text-brand font-sans tracking-[0.3em] uppercase font-semibold text-xl"
           >
             ZK Construction Group
           </motion.p>
         </div>
 
-        <h1 className="text-white text-4xl md:text-6xl max-w-5xl mx-auto leading-[1.1] flex flex-wrap justify-center gap-x-4">
+        <h1 className="text-white text-4xl md:text-7xl max-w-5xl mx-auto leading-[1.2] flex flex-wrap justify-center gap-x-4 font-sans tracking-tight">
           {words.map((word, i) => (
             <span key={i} className="overflow-hidden inline-block">
               <motion.span
@@ -87,7 +88,7 @@ export default function Hero() {
         transition={{ delay: 2, duration: 1 }}
         className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
       >
-        <span className="text-white/30 text-[10px] uppercase tracking-widest">Scroll</span>
+        <span className="text-white text-[10px] uppercase tracking-widest">Scroll</span>
         <div className="w-[1px] h-12 bg-white/20 relative overflow-hidden">
           <motion.div 
             animate={{ y: ["-100%", "100%"] }}

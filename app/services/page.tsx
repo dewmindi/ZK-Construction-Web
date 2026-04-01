@@ -61,7 +61,6 @@ export default function ServicesPage() {
   return (
     <SmoothScrollProvider>
       <Preloader />
-      <CustomCursor />
       <Navbar />
       <main className="bg-paper">
         {/* Header */}
@@ -107,13 +106,13 @@ export default function ServicesPage() {
                     initial={{ opacity: 0, scale: 0.95 }}
                     whileInView={{ opacity: 1, scale: 1 }}
                     transition={{ duration: 0.8 }}
-                    className="relative aspect-[4/3] overflow-hidden group"
+                    className="relative aspect-[4/3] overflow-hidden group rounded-2xl"
                   >
                     <Image 
                       src={service.image} 
                       alt={service.title} 
                       fill 
-                      className="object-cover transition-transform duration-700 group-hover:scale-110 grayscale hover:grayscale-0"
+                      className="object-cover transition-transform duration-700 group-hover:scale-110 "
                       referrerPolicy="no-referrer"
                     />
                     <div className="absolute inset-0 bg-industrial/20 group-hover:bg-transparent transition-colors" />

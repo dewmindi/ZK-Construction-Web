@@ -49,6 +49,7 @@ export default function Navbar() {
           >
             About
           </Link>
+          
 
           {/* Services Dropdown */}
           <div 
@@ -62,6 +63,7 @@ export default function Navbar() {
             >
               Services <ChevronDown className={`w-3 h-3 transition-transform duration-300 ${isServicesOpen ? 'rotate-180' : ''}`} />
             </Link>
+            
             
             <AnimatePresence>
               {isServicesOpen && (
@@ -84,8 +86,14 @@ export default function Navbar() {
               )}
             </AnimatePresence>
           </div>
+          <Link 
+            href="/team" 
+            className={`${navItemColorClass} text-[10px] uppercase tracking-widest font-bold hover:text-brand transition-colors duration-500`}
+          >
+            Team
+          </Link>
 
-          {['Projects', 'Process'].map((item) => (
+          {/* {['Projects', 'Process'].map((item) => (
             <Link 
               key={item} 
               href={`/#${item.toLowerCase()}`} 
@@ -93,7 +101,7 @@ export default function Navbar() {
             >
               {item}
             </Link>
-          ))}
+          ))} */}
           <Link 
             href="/contact" 
             className={`${navItemColorClass} text-[10px] uppercase tracking-widest font-bold hover:text-brand transition-colors duration-500`}

@@ -11,7 +11,6 @@ import { MapPin, Phone, Mail, Clock } from 'lucide-react';
 export default function ContactPage() {
   return (
     <SmoothScrollProvider>
-      <CustomCursor />
       <Navbar />
       <main className="bg-industrial min-h-screen pt-32">
         {/* Hero Section */}
