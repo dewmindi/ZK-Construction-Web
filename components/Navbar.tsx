@@ -126,47 +126,62 @@ export default function Navbar() {
         </div>
 
         {/* Mobile Toggle */}
-        <button className={`md:hidden ${textColorClass} transition-colors duration-500`} onClick={() => setIsOpen(!isOpen)}>
-          {isOpen ? <X /> : <Menu />}
+        <button 
+          className={`md:hidden ${textColorClass} transition-colors duration-500 relative z-[101]`} 
+          onClick={() => setIsOpen(!isOpen)}
+        >
+          {isOpen ? <X className="w-8 h-8" /> : <Menu className="w-8 h-8" />}
         </button>
       </div>
 
       {/* Mobile Menu */}
-      <motion.div
-        initial={false}
-        animate={{ x: isOpen ? 0 : '100%' }}
-        transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-        className="fixed inset-0 bg-industrial z-[99] flex flex-col items-center justify-center gap-8 md:hidden"
-      >
-        <Link 
-          href="/about" 
-          onClick={() => setIsOpen(false)}
-          className={`text-4xl font-display hover:text-brand transition-colors ${pathname === '/about' ? 'text-brand' : 'text-white'}`}
-        >
-          About
-        </Link>
-        <Link 
-          href="/services" 
-          onClick={() => setIsOpen(false)}
-          className={`text-4xl font-display hover:text-brand transition-colors ${pathname === '/services' ? 'text-brand' : 'text-white'}`}
-        >
-          Services
-        </Link>
-        <Link 
-          href="/team" 
-          onClick={() => setIsOpen(false)}
-          className={`text-4xl font-display hover:text-brand transition-colors ${pathname === '/team' ? 'text-brand' : 'text-white'}`}
-        >
-          Team
-        </Link>
-        <Link 
-          href="/contact" 
-          onClick={() => setIsOpen(false)}
-          className={`text-4xl font-display hover:text-brand transition-colors ${pathname === '/contact' ? 'text-brand' : 'text-white'}`}
-        >
-          Contact
-        </Link>
-      </motion.div>
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ x: '100%' }}
+            animate={{ x: 0 }}
+            exit={{ x: '100%' }}
+            transition={{ type: 'spring', damping: 30, stiffness: 200 }}
+            className="fixed inset-0 bg-industrial z-[99] flex flex-col items-center justify-center gap-8 md:hidden"
+          >
+            <Link 
+              href="/" 
+              onClick={() => setIsOpen(false)}
+              className={`text-4xl font-display hover:text-brand transition-colors ${pathname === '/' ? 'text-brand' : 'text-white'}`}
+            >
+              Home
+            </Link>
+            <Link 
+              href="/about" 
+              onClick={() => setIsOpen(false)}
+              className={`text-4xl font-display hover:text-brand transition-colors ${pathname === '/about' ? 'text-brand' : 'text-white'}`}
+            >
+              About
+            </Link>
+            <Link 
+              href="/services" 
+              onClick={() => setIsOpen(false)}
+              className={`text-4xl font-display hover:text-brand transition-colors ${pathname === '/services' ? 'text-brand' : 'text-white'}`}
+            >
+              Services
+            </Link>
+            <Link 
+              href="/team" 
+              onClick={() => setIsOpen(false)}
+              className={`text-4xl font-display hover:text-brand transition-colors ${pathname === '/team' ? 'text-brand' : 'text-white'}`}
+            >
+              Team
+            </Link>
+            <Link 
+              href="/contact" 
+              onClick={() => setIsOpen(false)}
+              className={`text-4xl font-display hover:text-brand transition-colors ${pathname === '/contact' ? 'text-brand' : 'text-white'}`}
+            >
+              Contact
+            </Link>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </nav>
   );
 }

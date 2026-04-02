@@ -52,7 +52,7 @@ export default function ContactForm() {
               </div>
               <div>
                 <div className="text-[10px] uppercase tracking-widest text-brand mb-2">Contact</div>
-                <div className="text-xl">0476310454 <br /> info@zkcg.com.au</div>
+                <div className="text-xl">0409051512 <br /> tender@zkcg.com.au</div>
               </div>
             </div>
           </div>
