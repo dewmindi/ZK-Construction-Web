@@ -48,11 +48,11 @@ export default function ContactForm() {
             <div className="space-y-8">
               <div>
                 <div className="text-[10px] uppercase tracking-widest text-brand mb-2">Office</div>
-                <div className="text-xl">124 Industrial Way, <br /> New York, NY 10001</div>
+                <div className="text-xl">9 Langford Street <br /> Banya, 4551</div>
               </div>
               <div>
                 <div className="text-[10px] uppercase tracking-widest text-brand mb-2">Contact</div>
-                <div className="text-xl">+1 (555) 0123-4567 <br /> hello@modernbuild.trade</div>
+                <div className="text-xl">0476310454 <br /> info@zkcg.com.au</div>
               </div>
             </div>
           </div>

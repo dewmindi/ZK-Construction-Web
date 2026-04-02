@@ -5,6 +5,7 @@ import { useState, useEffect } from 'react';
 import { Menu, X, ChevronDown } from 'lucide-react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import Image from 'next/image';
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -25,27 +26,38 @@ export default function Navbar() {
   ];
 
   // Logic to determine if text should be industrial (dark) or white
-  // On about/services/contact pages, it should be dark initially (light background)
-  // On home page, it should be white initially (dark hero)
+  // On about/contact pages, it should be dark initially (light background)
+  // On home and services page, it should be white initially (dark header)
   // Once scrolled, it's always white (dark background)
-  const isLightPage = ['/about', '/services', '/contact'].includes(pathname);
+  const isLightPage = ['/about'].includes(pathname);
   const textColorClass = (isLightPage && !scrolled) ? 'text-industrial' : 'text-white';
   const navItemColorClass = (isLightPage && !scrolled) ? 'text-industrial/70' : 'text-white/70';
   const borderColorClass = (isLightPage && !scrolled) ? 'border-industrial/20' : 'border-white/20';
   const buttonTextColorClass = (isLightPage && !scrolled) ? 'text-industrial' : 'text-white';
 
+  const getActiveClass = (path: string) => {
+    const isActive = pathname === path;
+    if (isActive) return 'text-brand !opacity-100';
+    return navItemColorClass;
+  };
+
   return (
     <nav className={`fixed top-0 left-0 w-full z-[100] transition-all duration-500 ${scrolled ? 'py-4 bg-industrial/90 backdrop-blur-md' : 'py-8'}`}>
       <div className="container mx-auto px-6 flex justify-between items-center">
         <Link href="/" className={`${textColorClass} font-display text-xl tracking-tighter transition-colors duration-500`}>
-          ZK CONSTRUCTION <span className="text-brand">GROUP</span>
+          <Image
+            src="/zk-plumbing-logo.webp"
+            alt="ZK Plumbing Logo"
+            width={80}
+            height={30}
+          />
         </Link>
 
         {/* Desktop Nav */}
         <div className="hidden md:flex items-center gap-12">
           <Link 
             href="/about" 
-            className={`${navItemColorClass} text-[10px] uppercase tracking-widest font-bold hover:text-brand transition-colors duration-500`}
+            className={`${getActiveClass('/about')} text-[10px] uppercase tracking-widest font-bold hover:text-brand transition-colors duration-500`}
           >
             About
           </Link>
@@ -59,7 +71,7 @@ export default function Navbar() {
           >
             <Link 
               href="/services"
-              className={`${navItemColorClass} text-[10px] uppercase tracking-widest font-bold hover:text-brand transition-colors duration-500 flex items-center gap-1`}
+              className={`${getActiveClass('/services')} text-[10px] uppercase tracking-widest font-bold hover:text-brand transition-colors duration-500 flex items-center gap-1`}
             >
               Services <ChevronDown className={`w-3 h-3 transition-transform duration-300 ${isServicesOpen ? 'rotate-180' : ''}`} />
             </Link>
@@ -88,7 +100,7 @@ export default function Navbar() {
           </div>
           <Link 
             href="/team" 
-            className={`${navItemColorClass} text-[10px] uppercase tracking-widest font-bold hover:text-brand transition-colors duration-500`}
+            className={`${getActiveClass('/team')} text-[10px] uppercase tracking-widest font-bold hover:text-brand transition-colors duration-500`}
           >
             Team
           </Link>
@@ -104,7 +116,7 @@ export default function Navbar() {
           ))} */}
           <Link 
             href="/contact" 
-            className={`${navItemColorClass} text-[10px] uppercase tracking-widest font-bold hover:text-brand transition-colors duration-500`}
+            className={`${getActiveClass('/contact')} text-[10px] uppercase tracking-widest font-bold hover:text-brand transition-colors duration-500`}
           >
             Contact
           </Link>
@@ -129,31 +141,28 @@ export default function Navbar() {
         <Link 
           href="/about" 
           onClick={() => setIsOpen(false)}
-          className="text-white text-4xl font-display hover:text-brand transition-colors"
+          className={`text-4xl font-display hover:text-brand transition-colors ${pathname === '/about' ? 'text-brand' : 'text-white'}`}
         >
           About
         </Link>
         <Link 
           href="/services" 
           onClick={() => setIsOpen(false)}
-          className="text-white text-4xl font-display hover:text-brand transition-colors"
+          className={`text-4xl font-display hover:text-brand transition-colors ${pathname === '/services' ? 'text-brand' : 'text-white'}`}
         >
           Services
         </Link>
-        {['Projects', 'Process'].map((item) => (
-          <Link 
-            key={item} 
-            href={`/#${item.toLowerCase()}`} 
-            onClick={() => setIsOpen(false)}
-            className="text-white text-4xl font-display hover:text-brand transition-colors"
-          >
-            {item}
-          </Link>
-        ))}
+        <Link 
+          href="/team" 
+          onClick={() => setIsOpen(false)}
+          className={`text-4xl font-display hover:text-brand transition-colors ${pathname === '/team' ? 'text-brand' : 'text-white'}`}
+        >
+          Team
+        </Link>
         <Link 
           href="/contact" 
           onClick={() => setIsOpen(false)}
-          className="text-white text-4xl font-display hover:text-brand transition-colors"
+          className={`text-4xl font-display hover:text-brand transition-colors ${pathname === '/contact' ? 'text-brand' : 'text-white'}`}
         >
           Contact
         </Link>

@@ -5,14 +5,30 @@ import { useEffect, useState } from 'react';
 
 export default function Preloader() {
   const [progress, setProgress] = useState(0);
-  const [isVisible, setIsVisible] = useState(true);
+  const [isVisible, setIsVisible] = useState(false);
+  const [shouldRender, setShouldRender] = useState(false);
 
   useEffect(() => {
+    // Check if preloader has been shown in this session
+    const hasShownPreloader = sessionStorage.getItem('hasShownPreloader');
+    
+    if (hasShownPreloader) {
+      setShouldRender(false);
+      return;
+    }
+
+    // If not shown, start the preloader
+    setShouldRender(true);
+    setIsVisible(true);
+    
     const timer = setInterval(() => {
       setProgress((prev) => {
         if (prev >= 100) {
           clearInterval(timer);
-          setTimeout(() => setIsVisible(false), 500);
+          setTimeout(() => {
+            setIsVisible(false);
+            sessionStorage.setItem('hasShownPreloader', 'true');
+          }, 500);
           return 100;
         }
         return prev + 1;
@@ -21,6 +37,8 @@ export default function Preloader() {
 
     return () => clearInterval(timer);
   }, []);
+
+  if (!shouldRender) return null;
 
   return (
     <AnimatePresence>

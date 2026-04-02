@@ -20,12 +20,6 @@ export const TEAM_MEMBERS: TeamMember[] = [
     role: "Chief Financial Officer/Director",
     description: "Kenny Tse offers a wealth of experience in business and finance management with 10 years experience in the sector. Kenny is responsible for all of the company’s financial functions, including day to day invoicing, tax and accounting, corporate and investor relations. In his role, Kenny leads and provides strategic direction to grow the profits of the company, allows us to expand our support to future communities and project developments. Outside of the construction industry Kenny is a Doctor of Chiropractic having completed a double degree in Bachelor of Health Science/Bachelor of Applied science ( Chiropractic). He has owned and operated 10 seperate Chiropractic practices throughout QLD, NSW and VIC, therefore brings a proven track record of continual start ups and long standing businesses.In his personal life Kenny is a professional fighter competing in Kickboxing and Muay Thai. In his fighting career he has compiled an impressive record of 40 W | 8L , and has represented Australia on global stages around the world including France, Malaysia, China, Myanmar and Thailand.",
     image: "/team/KennyTse.webp"
-  },
-  {
-    id: "member-3",
-    name: "Roger Griffith",
-    role: "Commercial Project Manager",
-    description: "Roger practised as a Barrister, defence lawyer and Crown Prosecutor for 28 years in Queensland and the Northern Territorry. He was also an officer in the RAAF Specialist Reserve. Roger brings his wealth of experience to the extensive legislative and regulatory frameworks that govern our industry, as well as a deep understanding of contractual relationships Rogers articulation and commitment sets him as the perfect fit for the role of commercial project manager. ",
-    image: "/team/RogerGriffith.webp"
   }
 ];
+

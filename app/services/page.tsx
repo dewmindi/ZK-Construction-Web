@@ -1,61 +1,14 @@
 'use client';
 
 import { motion } from 'motion/react';
-import { HardHat, Zap, Droplets, ChevronRight } from 'lucide-react';
+import { ChevronRight } from 'lucide-react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
-import CustomCursor from '@/components/CustomCursor';
 import SmoothScrollProvider from '@/components/SmoothScrollProvider';
 import Preloader from '@/components/Preloader';
 import Image from 'next/image';
-
-const serviceDetails = [
-  {
-    id: "construction",
-    title: "Construction Services",
-    subtitle: "Structural Integrity & Precision",
-    description: "From ground-breaking to final inspection, our construction team delivers architectural excellence. We specialize in industrial-grade builds, commercial renovations, and high-end residential structures.",
-    features: [
-      "Structural Engineering & Analysis",
-      "Industrial Facility Design",
-      "Commercial Build-outs",
-      "Sustainable Building Practices",
-      "Project Management & Oversight"
-    ],
-    icon: HardHat,
-    image: "/Construction.jpeg"
-  },
-  {
-    id: "electrical",
-    title: "Electrical Services",
-    subtitle: "Powering Modern Infrastructure",
-    description: "Our certified electricians provide comprehensive power solutions. We handle complex wiring, smart system integration, and industrial-scale electrical infrastructure with a focus on safety and efficiency.",
-    features: [
-      "Industrial Power Distribution",
-      "Smart Building Automation",
-      "Emergency Power Systems",
-      "Energy Efficiency Audits",
-      "High-Voltage Installations"
-    ],
-    icon: Zap,
-    image: "/Electrician.jpeg"
-  },
-  {
-    id: "plumbing",
-    title: "Plumbing Services",
-    subtitle: "Advanced Hydraulic Engineering",
-    description: "We deliver sophisticated water management systems. Our plumbing experts specialize in high-pressure hydraulics, commercial sanitation, and precision pipework for complex industrial applications.",
-    features: [
-      "Commercial Hydraulic Systems",
-      "Industrial Waste Management",
-      "Water Filtration & Purification",
-      "Precision Pipe Fitting",
-      "24/7 Emergency Maintenance"
-    ],
-    icon: Droplets,
-    image: "/Plumber.jpeg"
-  }
-];
+import { serviceDetails, workProcess } from '@/lib/constants-services';
+import WhyChooseUs from '@/components/WhyChooseUs';
 
 export default function ServicesPage() {
   return (
@@ -93,60 +46,79 @@ export default function ServicesPage() {
         </section>
 
         {/* Detailed Services */}
-        <div className="space-y-32 py-32">
+        <div className="space-y-48 py-32 bg-paper">
           {serviceDetails.map((service, i) => (
             <section 
               key={service.id} 
               id={service.id} 
               className={`container mx-auto px-6 scroll-mt-32`}
             >
-              <div className={`flex flex-col lg:flex-row gap-16 items-center ${i % 2 !== 0 ? 'lg:flex-row-reverse' : ''}`}>
-                <div className="flex-1 w-full">
+              <div className={`flex flex-col lg:flex-row gap-20 items-start ${i % 2 !== 0 ? 'lg:flex-row-reverse' : ''}`}>
+                <div className="flex-1 w-full lg:sticky lg:top-40">
                   <motion.div 
-                    initial={{ opacity: 0, scale: 0.95 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.8 }}
-                    className="relative aspect-[4/3] overflow-hidden group rounded-2xl"
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 1 }}
+                    className="relative aspect-[4/5] overflow-hidden rounded-[80px] shadow-2xl group"
                   >
                     <Image 
                       src={service.image} 
                       alt={service.title} 
                       fill 
-                      className="object-cover transition-transform duration-700 group-hover:scale-110 "
+                      className="object-cover transition-transform duration-1000 group-hover:scale-110"
                       referrerPolicy="no-referrer"
                     />
-                    <div className="absolute inset-0 bg-industrial/20 group-hover:bg-transparent transition-colors" />
+                    <div className="absolute inset-0 bg-industrial/10 group-hover:bg-transparent transition-colors duration-700" />
                   </motion.div>
                 </div>
 
-                <div className="flex-1">
+                <div className="flex-1 lg:pt-10">
                   <motion.div
                     initial={{ opacity: 0, x: i % 2 === 0 ? 50 : -50 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.8 }}
                   >
-                    <div className="w-16 h-16 bg-industrial flex items-center justify-center mb-8">
-                      <service.icon className="w-8 h-8 text-brand" />
+                    <div className="flex items-center gap-4 mb-6">
+                      <div className="w-12 h-12 rounded-full bg-industrial flex items-center justify-center">
+                        <service.icon className="w-6 h-6 text-brand" />
+                      </div>
+                      <span className="text-brand text-xs font-bold tracking-[0.4em] uppercase">{service.subtitle}</span>
                     </div>
-                    <h2 className="text-4xl md:text-5xl text-industrial mb-2">{service.title}</h2>
-                    <h3 className="text-brand text-xs font-bold tracking-widest uppercase mb-6">{service.subtitle}</h3>
-                    <p className="text-industrial/60 text-lg leading-relaxed mb-8">
+                    
+                    <h2 className="text-5xl md:text-7xl text-industrial mb-10 leading-[0.9] font-sans tracking-tighter">
+                      {service.title.split(' ').map((word, idx) => (
+                        <span key={idx} className={idx === 1 ? 'text-brand' : ''}>{word} </span>
+                      ))}
+                    </h2>
+
+                    <p className="text-industrial text-xl leading-relaxed mb-12 font-light border-l-2 border-brand/20 pl-8 italic">
                       {service.description}
                     </p>
                     
-                    <ul className="space-y-4">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4">
                       {service.features.map((feature, idx) => (
-                        <li key={idx} className="flex items-center gap-4 text-industrial/80 group cursor-default">
-                          <div className="w-2 h-2 bg-brand rounded-full group-hover:scale-150 transition-transform" />
-                          <span className="text-sm font-medium">{feature}</span>
-                        </li>
+                        <motion.div 
+                          key={idx}
+                          initial={{ opacity: 0, y: 10 }}
+                          whileInView={{ opacity: 1, y: 0 }}
+                          transition={{ delay: idx * 0.05 }}
+                          className="flex items-start gap-4 group py-2"
+                        >
+                          <div className="w-1.5 h-1.5 bg-brand/40 rounded-full mt-2.5 group-hover:bg-brand transition-colors" />
+                          <span className="text-industrial/80 text-sm font-medium tracking-wide">{feature}</span>
+                        </motion.div>
                       ))}
-                    </ul>
+                    </div>
 
-                    <button className="mt-12 flex items-center gap-4 group text-industrial hover:text-brand transition-colors">
-                      <span className="text-xs font-bold tracking-widest uppercase">Request a Quote</span>
-                      <div className="w-10 h-10 rounded-full border border-industrial/10 flex items-center justify-center group-hover:bg-brand group-hover:border-brand group-hover:text-white transition-all">
-                        <ChevronRight className="w-4 h-4" />
+                    <button className="mt-16 group flex items-center gap-6 text-industrial hover:text-brand transition-all duration-500">
+                      <div className="relative">
+                        <div className="w-14 h-14 rounded-full border border-industrial/10 flex items-center justify-center group-hover:border-brand group-hover:bg-brand transition-all duration-500">
+                          <ChevronRight className="w-5 h-5 group-hover:text-white group-hover:translate-x-1 transition-all" />
+                        </div>
+                      </div>
+                      <div className="flex flex-col">
+                        <span className="text-[10px] uppercase tracking-[0.3em] font-bold text-industrial/40">Next Step</span>
+                        <span className="text-xs font-bold tracking-widest uppercase items-center">Get a Free Scope Validation</span>
                       </div>
                     </button>
                   </motion.div>
@@ -155,6 +127,10 @@ export default function ServicesPage() {
             </section>
           ))}
         </div>
+
+        {/* How We Work Section */}
+        <WhyChooseUs />
+        
 
         {/* CTA Section */}
         <section className="py-24 bg-brand text-white text-center">

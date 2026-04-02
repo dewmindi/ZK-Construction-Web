@@ -25,7 +25,7 @@ export default function Hero() {
       >
         <Image
           // src="https://picsum.photos/seed/construction/1920/1080"
-          src="/ZK-Hero.jpeg"
+          src="/ZK-Hero1.jpeg"
           alt="Construction Site"
           fill
           className="object-cover brightness-[0.4]"
@@ -74,7 +74,7 @@ export default function Hero() {
           className="mt-12"
         >
           <button className="group relative px-8 py-4 bg-brand text-white font-display text-sm tracking-widest overflow-hidden transition-all hover:pr-12">
-            <span className="relative z-10">EXPLORE SERVICES</span>
+            <a href="/services" className="relative z-10">EXPLORE SERVICES</a>
             <div className="absolute inset-0 bg-industrial translate-x-[-101%] group-hover:translate-x-0 transition-transform duration-300" />
             <span className="absolute right-4 top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity">→</span>
           </button>

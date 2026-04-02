@@ -10,101 +10,99 @@ import { TEAM_MEMBERS } from '@/lib/constants-team';
 
 function TeamMemberSection({ member, index }: { member: any, index: number }) {
   const sectionRef = useRef(null);
-  const isInView = useInView(sectionRef, { once: false, amount: 0.3 });
-  
   const { scrollYProgress } = useScroll({
     target: sectionRef,
     offset: ["start end", "end start"]
   });
 
-  const y = useTransform(scrollYProgress, [0, 1], [100, -100]);
-  const opacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0, 1, 1, 0]);
-  const scale = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0.8, 1, 1, 0.8]);
-
+  const y = useTransform(scrollYProgress, [0, 1], [50, -50]);
   const isEven = index % 2 === 0;
 
   return (
     <section 
       ref={sectionRef} 
-      className="min-h-screen py-32 flex items-center relative overflow-hidden"
+      className="py-24 relative overflow-hidden"
     >
-      <div className="container mx-auto px-6">
-        <div className={`flex flex-col ${isEven ? 'md:flex-row' : 'md:flex-row-reverse'} items-center gap-16 md:gap-24`}>
+      <div className="container mx-auto px-6 max-w-6xl">
+        <div className={`flex flex-col ${isEven ? 'md:flex-row' : 'md:flex-row-reverse'} items-center gap-12 md:gap-20`}>
           
           {/* Image Container */}
           <motion.div 
-            style={{ y, scale }}
-            className="flex-1 relative w-full aspect-[4/5] md:aspect-square overflow-hidden"
+            style={{ y }}
+            className="flex-1 relative w-full aspect-[4/5] md:aspect-[4/5] max-w-md"
           >
-            <Image
-              src={member.image}
-              alt={member.name}
-              fill
-              className="object-cover  transition-all duration-700"
-              priority={index === 0}
-            />
-            <div className="absolute inset-0 bg-industrial/20" />
+            <div className="relative w-full h-full rounded-[40px] md:rounded-[80px] overflow-hidden border border-brand/10 shadow-2xl">
+              <Image
+                src={member.image}
+                alt={member.name}
+                fill
+                className="object-cover transition-transform duration-1000 hover:scale-110"
+                priority={index === 0}
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-industrial/40 to-transparent opacity-60" />
+            </div>
+            
+            {/* Visual Decor - Rounded Frame Accent */}
+            <div className={`absolute -inset-4 border border-brand/5 rounded-[50px] md:rounded-[90px] -z-10 ${isEven ? 'translate-x-4 translate-y-4' : '-translate-x-4 translate-y-4'}`} />
           </motion.div>
 
           {/* Text Content */}
-          <div className="flex-1 space-y-8">
+          <div className="flex-1 space-y-6">
             <motion.div
-              initial={{ opacity: 0, x: isEven ? 50 : -50 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              viewport={{ once: false }}
+              viewport={{ once: true }}
             >
-              <span className="text-brand text-xs font-bold tracking-[0.5em] uppercase mb-4 block">
-                {member.role}
-              </span>
-              <h2 className="text-industrial text-5xl md:text-7xl mb-8 leading-tight font-sans tracking-tight">
+              <div className="flex items-center gap-4 mb-3">
+                <div className="w-8 h-[2px] bg-brand" />
+                <span className="text-brand text-xs font-bold tracking-[0.4em] uppercase">
+                  {member.role}
+                </span>
+              </div>
+              <h2 className="text-industrial text-5xl md:text-6xl mb-6 leading-[1.1] font-sans tracking-tight">
                 {member.name}
               </h2>
             </motion.div>
 
             <motion.div
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
-              viewport={{ once: false }}
+              transition={{ duration: 0.8, delay: 0.3 }}
+              viewport={{ once: true }}
               className="relative"
             >
-              {/* Animated Text Lines */}
-              <p className="text-industrial/70 text-lg md:text-xl leading-relaxed font-light">
+              <p className="text-industrial/70 text-lg md:text-xl leading-relaxed italic border-l-2 border-brand/20 pl-6">
                 {member.description}
               </p>
-              
-              {/* Visual Accent */}
-              <div className={`absolute top-0 ${isEven ? '-left-8' : '-right-8'} w-[1px] h-full bg-brand/30 hidden md:block`} />
             </motion.div>
 
             <motion.div
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              transition={{ duration: 1, delay: 0.6 }}
-              viewport={{ once: false }}
-              className="pt-8"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+              viewport={{ once: true }}
+              className="pt-6"
             >
-              <div className="flex items-center gap-4 group cursor-pointer">
-                <div className="w-12 h-[1px] bg-industrial/20 group-hover:w-20 group-hover:bg-brand transition-all duration-500" />
-                <span className="text-[10px] uppercase tracking-widest font-bold text-industrial/40 group-hover:text-industrial transition-colors">
-                  View Portfolio
+              <button className="flex items-center gap-4 group">
+                <div className="w-10 h-10 rounded-full border border-industrial/10 flex items-center justify-center group-hover:bg-brand group-hover:border-brand transition-all duration-500">
+                  <div className="w-2 h-2 rounded-full bg-industrial group-hover:bg-white transition-colors" />
+                </div>
+                <span className="text-xs uppercase tracking-widest font-bold text-industrial/50 group-hover:text-industrial transition-colors">
+                  Contact Specialist
                 </span>
-              </div>
+              </button>
             </motion.div>
           </div>
         </div>
       </div>
       
-      {/* Background Decorative Text */}
-      <motion.div 
-        style={{ x: isEven ? -100 : 100 }}
-        className="absolute -bottom-10 left-0 w-full pointer-events-none opacity-[0.03] select-none"
-      >
-        <span className="text-[20vw] font-display whitespace-nowrap leading-none uppercase">
+      {/* Background Decorative Text - More Subtle and Modern */}
+      <div className={`absolute top-1/2 -translate-y-1/2 ${isEven ? '-right-20' : '-left-20'} pointer-events-none opacity-[0.015] select-none -z-10`}>
+        <span className="text-[25vw] font-display whitespace-nowrap leading-none uppercase stroke-text">
           {member.name.split(' ')[0]}
         </span>
-      </motion.div>
+      </div>
     </section>
   );
 }
@@ -158,9 +156,9 @@ export default function TeamPage() {
               viewport={{ once: true }}
             >
               <h2 className="text-4xl md:text-6xl mb-12">Building your vision?</h2>
-              <button className="px-12 py-5 bg-brand text-white font-bold tracking-widest text-sm hover:bg-white hover:text-industrial transition-all duration-300">
+              <a href='/contact' className="px-12 py-5 bg-brand text-white font-bold tracking-widest text-sm hover:bg-white hover:text-industrial transition-all duration-300">
                 MEET THE FULL TEAM
-              </button>
+              </a>
             </motion.div>
           </div>
         </section>

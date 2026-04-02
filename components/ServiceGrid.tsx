@@ -1,36 +1,9 @@
 'use client';
 
 import { motion } from 'motion/react';
-import { HardHat, Zap, Droplets } from 'lucide-react';
 import { useState } from 'react';
 import Image from 'next/image';
-
-const services = [
-  {
-    title: "Commercial Projects",
-    description: "From large-scale industrial hubs to modern office complexes, we deliver commercial excellence without the typical construction hurdles.",
-    icon: HardHat,
-    color: "rgba(255, 107, 0, 0.1)",
-    accent: "#FF6B00",
-    image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070&auto=format&fit=crop"
-  },
-  {
-    title: "Residential Works",
-    description: "Quality-focused residential construction and maintenance. We bring professional-grade management to every home project.",
-    icon: Zap, // Using Zap for energy/modern feel or could change
-    color: "rgba(0, 122, 255, 0.1)",
-    accent: "#007AFF",
-    image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=2070&auto=format&fit=crop"
-  },
-  {
-    title: "Project Management",
-    description: "Our platform ensures seamless communication and engagement, taking on complex technical projects other builders refuse.",
-    icon: Droplets, // Using Droplets or could change to a management icon
-    color: "rgba(0, 210, 255, 0.1)",
-    accent: "#00D2FF",
-    image: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=2070&auto=format&fit=crop"
-  }
-];
+import { coreServices } from '@/lib/constants-services';
 
 export default function ServiceGrid() {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
@@ -57,7 +30,7 @@ export default function ServiceGrid() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-white/10">
-          {services.map((service, i) => (
+          {coreServices.map((service, i) => (
             <motion.div
               key={i}
               initial={{ opacity: 0, y: 30 }}
@@ -103,7 +76,7 @@ export default function ServiceGrid() {
               </div>
 
               <div className="relative z-10 flex items-center gap-4 text-white/20 group-hover:text-white transition-colors">
-                <span className="text-[10px] font-bold tracking-widest uppercase">Learn More</span>
+                <a href="/services" className="text-[10px] font-bold tracking-widest uppercase">Learn More</a>
                 <div className="h-px flex-1 bg-current" />
                 <span className="text-xl">0{i + 1}</span>
               </div>

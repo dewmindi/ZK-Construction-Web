@@ -34,9 +34,9 @@ export default function ContactPage() {
         <section className="container mx-auto px-6 mb-32">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {[
-              { icon: MapPin, title: "Office", detail: "124 Industrial Way, New York, NY 10001" },
-              { icon: Phone, title: "Phone", detail: "+1 (555) 0123-4567" },
-              { icon: Mail, title: "Email", detail: "hello@modernbuild.trade" },
+              { icon: MapPin, title: "Office", detail: "9 Langford Street, Banya, 4551" },
+              { icon: Phone, title: "Phone", detail: "0476310454" },
+              { icon: Mail, title: "Email", detail: "info@zkcg.com.au" },
               { icon: Clock, title: "Hours", detail: "Mon - Fri: 8:00 AM - 6:00 PM" }
             ].map((item, i) => (
               <motion.div
@@ -59,11 +59,18 @@ export default function ContactPage() {
         <ContactForm />
 
         {/* Map Placeholder */}
-        <section className="w-full h-[400px] bg-industrial/50 relative overflow-hidden grayscale opacity-50 hover:opacity-100 transition-opacity duration-700">
-          <div className="absolute inset-0 flex items-center justify-center text-white/20 font-display text-4xl uppercase tracking-widest">
-            Interactive Map Placeholder
-          </div>
-          {/* In a real app, you'd embed a Google Map here */}
+        <section className="w-full h-[400px] bg-industrial/50 relative overflow-hidden ">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14183.123456789012!2d153.05600000000002!3d-26.815000000000005!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6b93998765432101%3A0x1234567890abcdef!2s9%20Langford%20St%2C%20Banya%20QLD%204551!5e0!3m2!1sen!2sau!4v1700000000000!5m2!1sen!2sau"
+            width="100%"
+            height="100%"
+            style={{ border: 0 }}
+            allowFullScreen
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+            className="absolute inset-0"
+          ></iframe>
+          
         </section>
       </main>
       <Footer />
