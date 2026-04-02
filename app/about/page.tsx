@@ -36,10 +36,10 @@ export default function AboutPage() {
         {/* Image Section */}
         <section className="w-full h-[60vh] relative mb-32 overflow-hidden">
           <Image
-            src="/ZK-Hero3.jpeg"
+            src="/ZK-Hero1.jpeg"
             alt="Professional Construction Management"
             fill
-            className="object-cover grayscale hover:grayscale-0 transition-all duration-1000"
+            className="object-cover  transition-all duration-1000"
             referrerPolicy="no-referrer"
           />
           <div className="absolute inset-0 bg-industrial/20" />
@@ -93,10 +93,10 @@ export default function AboutPage() {
               </div>
               <div className="flex-1 relative w-full aspect-square md:aspect-auto md:h-[600px]">
                 <Image
-                  src="/Electrician.jpeg"
+                  src="/Electrician1.jpeg"
                   alt="Our Team at Work"
                   fill
-                  className="object-cover grayscale"
+                  className="object-cover "
                   referrerPolicy="no-referrer"
                 />
                 <div className="absolute -bottom-8 -left-8 bg-brand p-12 hidden lg:block">
