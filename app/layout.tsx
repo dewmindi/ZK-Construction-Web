@@ -16,6 +16,14 @@ const archivo = Archivo_Black({
 export const metadata: Metadata = {
   title: 'ZK Construction Group | Engineering Excellence',
   description: 'Premium Construction, Electrical, and Plumbing services specializing in minimalist industrial design and precision execution.',
+  icons: {
+    icon: [
+      { url: '/favicon.ico', sizes: 'any' },
+    ],
+    apple: [
+      { url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' },
+    ],
+  },
 };
 
 export default function RootLayout({children}: {children: React.ReactNode}) {

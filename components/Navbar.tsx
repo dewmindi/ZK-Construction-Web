@@ -120,9 +120,12 @@ export default function Navbar() {
           >
             Contact
           </Link>
-          <button className={`px-6 py-2 border ${borderColorClass} ${buttonTextColorClass} text-[10px] uppercase tracking-widest font-bold hover:bg-brand hover:border-brand hover:text-white transition-all duration-500`}>
+          <Link 
+            href="#contact" 
+            className={`px-6 py-2 border ${borderColorClass} ${buttonTextColorClass} text-[10px] uppercase tracking-widest font-bold hover:bg-brand hover:border-brand hover:text-white transition-all duration-500`}
+          >
             Get Quote
-          </button>
+          </Link>
         </div>
 
         {/* Mobile Toggle */}

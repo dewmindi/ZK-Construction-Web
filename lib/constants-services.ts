@@ -69,21 +69,24 @@ export const coreServices = [
     description: "Multi-trade construction, site work, and earthmoving. Built for remote conditions and high-quality residential standards.",
     icon: HardHat,
     accent: "#FF6B00",
-    image: "/Construction.jpeg"
+    image: "/Construction.jpeg",
+    link: "/services#construction"
   },
   {
     title: "Electrical",
     description: "Comprehensive electrical solutions from switchboard upgrades to fault finding, ensuring safety and compliance in all environments.",
     icon: Zap,
     accent: "#007AFF",
-    image: "/Electrician1.jpeg"
+    image: "/Electrician1.jpeg",
+    link: "/services#electrical"
   },
   {
     title: "Plumbing",
     description: "Reliable civil and maintenance plumbing. Practical solutions for drainage, hot water, and remote site infrastructure.",
     icon: Droplets,
     accent: "#00D2FF",
-    image: "/Plumber.jpeg"
+    image: "/Plumber.jpeg",
+    link: "/services#plumbing"
   }
 ];
 
