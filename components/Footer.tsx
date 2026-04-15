@@ -45,9 +45,9 @@ export default function Footer() {
             </p>
             <div className="flex gap-6">
               {[
-                { Icon: Facebook, href: "https://www.facebook.com/share/18PiFAK8ta/?mibextid=wwXIfr&ref=1" },
-                { Icon: Instagram, href: "https://www.instagram.com/zk_construction_group?igsh=ZHZtbmpjOXp5Mmhw&utm_source=qr" },
-                { Icon: TikTokIcon, href: "https://www.tiktok.com/@zk_construction_group?_r=1&_t=ZS-95B2aaYnU64" }
+                { Icon: Facebook, href: "https://www.facebook.com/zkconstructionG/" },
+                { Icon: Instagram, href: "https://www.instagram.com/zk_construction_group" },
+                { Icon: TikTokIcon, href: "https://www.tiktok.com/@zk_construction_group" }
               ].map((social, i) => (
                 <a key={i} href={social.href} className="text-white/30 hover:text-brand transition-colors">
                   <social.Icon className="w-5 h-5" />
