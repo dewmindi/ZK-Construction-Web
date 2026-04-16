@@ -105,7 +105,9 @@ export default function Footer() {
           <p className="text-white/30 text-[10px] uppercase tracking-widest">
             © 2026 ZK Construction Group. All rights reserved.
           </p>
-          
+          <p className="text-white/30 text-[10px] uppercase tracking-widest">
+            Designed by <a href="https://csgraphicmeta.com.au/" className="hover:text-white transition-colors">CS GRAPHIC META</a>
+          </p>
           <button 
             onClick={scrollToTop}
             className="group flex items-center gap-4 text-[10px] uppercase tracking-widest text-white/30 hover:text-white transition-colors"
