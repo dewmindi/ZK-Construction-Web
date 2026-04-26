@@ -35,8 +35,8 @@ export default function ContactPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {[
               { icon: MapPin, title: "Office", detail: "9 Langford Street, Banya, 4551" },
-              { icon: Phone, title: "Phone", detail: "0409051512" },
-              { icon: Mail, title: "Email", detail: "tender@zkcg.com.au" },
+              { icon: Phone, title: "Phone", detail: "0406696575" },
+              { icon: Mail, title: "Email", detail: "tenders@zkcg.com.au" },
               { icon: Clock, title: "Hours", detail: "Mon - Fri: 8:00 AM - 6:00 PM" }
             ].map((item, i) => (
               <motion.div

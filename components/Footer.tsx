@@ -87,11 +87,11 @@ export default function Footer() {
               </li>
               <li className="flex items-center gap-3">
                 <Phone className="w-4 h-4 text-brand flex-shrink-0" />
-                <a href="tel:0409051512" className="text-sm hover:text-white transition-colors">0409051512</a>
+                <a href="tel:0406696575" className="text-sm hover:text-white transition-colors">0406696575</a>
               </li>
               <li className="flex items-center gap-3">
                 <Mail className="w-4 h-4 text-brand flex-shrink-0" />
-                <a href="mailto:tender@zkcg.com.au" className="text-sm hover:text-white transition-colors">tender@zkcg.com.au</a>
+                <a href="mailto:tenders@zkcg.com.au" className="text-sm hover:text-white transition-colors">tenders@zkcg.com.au</a>
               </li>
               <li className="flex items-center gap-3">
                 <Clock className="w-4 h-4 text-brand flex-shrink-0" />
